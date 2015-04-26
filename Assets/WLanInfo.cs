@@ -13,9 +13,6 @@ public class WLanInfo : MonoBehaviour
         public Text ssidText = null;
         public Text rssiText = null;
         public Text bssidText = null;
-        public Text powerText = null;
-        public Text rateText = null;
-        public Text proxyText = null;
     }
 
     protected Transform infoCanvas = null;
@@ -29,10 +26,6 @@ public class WLanInfo : MonoBehaviour
         this.infoParams.ssidText = infoCanvas.FindChild("Offset/Top/Texts/SSIDText").GetComponent<Text>();
         this.infoParams.rssiText = infoCanvas.FindChild("Offset/Top/Texts/RSSIText").GetComponent<Text>();
         this.infoParams.bssidText = infoCanvas.FindChild("Offset/Top/Texts/BSSIDText").GetComponent<Text>();
-        this.infoParams.rateText = infoCanvas.FindChild("Offset/Top/Texts/RateText").GetComponent<Text>();
-        this.infoParams.powerText = infoCanvas.FindChild("Offset/Top/Texts/PowerText").GetComponent<Text>();
-        this.infoParams.proxyText = infoCanvas.FindChild("Offset/Top/Texts/ProxyText").GetComponent<Text>();
-        this.infoParams.getInfoButton.interactable = true;
         this.infoParams.stopButton.interactable = false;
     }
 
@@ -62,9 +55,6 @@ public class WLanInfo : MonoBehaviour
         this.infoParams.ssidText.text = string.Format("SSID:{0}", info.ssid);
         this.infoParams.rssiText.text = string.Format("RSSI:{0}dBm",info.rssi);
         this.infoParams.bssidText.text = string.Format("BSSID:{0}",info.bssid);
-        this.infoParams.rateText.text = string.Format("Rate:{0}",info.transmitRate);
-        this.infoParams.powerText.text = string.Format("Power:{0}",info.transmitPower);
-        this.infoParams.proxyText.text = info.isProxy ? "Proxy:ON":"Proxy:OFF";
     }
 
     /// <summary>
@@ -95,7 +85,7 @@ public class WLanInfo : MonoBehaviour
     {
         InitWifiInfo();
     }
-
+		
     void OnDestroy()
     {
         RemoveAllEvents();
